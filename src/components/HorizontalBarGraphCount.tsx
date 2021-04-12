@@ -16,12 +16,14 @@ export interface BarProps {
 }
 
 export interface HorizontalBarGraphCountProps {
-    data: BarFeatures[]
+    data: BarFeatures[],
+    title?: string
 }
 
 // Reference :: https://css-tricks.com/how-to-make-charts-with-svg/
 const HorizontalBarGraphCount: React.FunctionComponent<HorizontalBarGraphCountProps> = (props) => {
-    const { data } = props;
+    const { data, title } = props;
+    const figcaption_title = title ? title : ''
     useEffect(() => {
         var rect = document.querySelectorAll("rect");
 
@@ -42,7 +44,7 @@ const HorizontalBarGraphCount: React.FunctionComponent<HorizontalBarGraphCountPr
 
     return (
         <figure>
-            <figcaption>A graph that shows the number of fruit collected</figcaption>
+            <figcaption>{figcaption_title}</figcaption>
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" className="chart"
                 width="420" height="150" aria-labelledby="title" role="img">
                 <title id="title">A bart chart showing information</title>
